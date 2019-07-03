@@ -77,11 +77,11 @@ optional arguments:
 python GTA_Hunter.py -g data/training/gta/3_gta.faa -v data/training/viral/3_viral.faa -c 100 -k 3 -q example_run/g3_example.faa
 ```
   As an output, the first two genes will be classified as "GTAs" and other three as "viruses".
-  If you want to identify RcGTA-like genes from the whole proteome, the 'blast' function can be used. Try the following example run for Paracoccus marcussi (note: create 'example_outdir' folder):
+  If you want to identify RcGTA-like genes from the whole proteome, the 'blast' function can be used. Try the following example run for Paracoccus marcussi proteome (note: create 'example_outdir' folder):
 ```
 python GTA_Hunter.py -b -f example_blast/ -o example_outdir/ -O
 ```
-  The genes will be classified using optimal parameters that were detected via cross validation. The results will be written to the file 'result_(file_name).out'.
+  The genes will be classified using optimal parameters that were detected via cross validation. The results will be written to the file 'result_(file_name).out' at the output directory.
 
 ## From genes to cluster
   Detected RcGTA-like genes can be clustered using DBSCAN via additional script, which is located at the "Clustering genes" folder.
