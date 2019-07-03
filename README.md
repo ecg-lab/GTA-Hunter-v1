@@ -39,7 +39,7 @@ optional arguments:
                         (default=4).
   -p [PSEAAC], --pseaac [PSEAAC]
                         Expand feature set to include pseudo amino acid
-                        composition. Specify lamba (default= None). Weight =
+                        composition. Specify lambda (default= None). Weight =
                         0.05.
   -y, --physico         Expand feature set to include physicochemical
                         composition.
@@ -107,4 +107,4 @@ optional arguments:
 ```
 python Clustering_genes.py --data example_cl/data.txt --feature example_cl/GCF_006151785.1_feature.txt
 ```
-  As an output, test run will contain RcGTA-like cluster of 11 genes.
+  As an output, test run will show that RcGTA-like cluster contains 11 genes.
