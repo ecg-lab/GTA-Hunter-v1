@@ -122,7 +122,7 @@ python GTA_Hunter.py -b -f example_blast/ -o example_outdir/ -O
 The results will be written to the file 'result_(file_name).out' in the output directory.
 The BLASTP search will identify 27 RcGTA homologs and 17 of them will be classified as RcGTA-like genes (see 'example_output' for details).
 
-## Are the detected GTA-like genes located in the same neighborhood in a genome?
+## How to use it - Example 4: Are the detected GTA-like genes located in the same neighborhood in a genome?
 
 `GTA_Hunter.py` only evaluates one gene at a time, even if queries come from the same genome or even when the whole genome was scanned. To see if the detected "GTA" genes are found in the same neighborhood in a genome, one can run an additional script (`Clustering_genes.py`; located in the "Clustering genes" folder). The script uses the DBSCAN algorithm (Ester et al. 1996).
 
