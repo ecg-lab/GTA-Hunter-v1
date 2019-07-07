@@ -137,7 +137,7 @@ Clustering of genes via DBSCAN to get RcGTA-like clusters
 optional arguments:
   -h, --help            Show this help message and exit
   --data DATA           File that containes one line with space or tab-separated entries. First entry is the genome or contig ID, 
-						the rest are RefSeq IDs of the encoded proteins to cluster
+			the rest are RefSeq IDs of the encoded proteins to cluster
   
   --feature FEATURE     Genome feature table in the NCBI feature table file format.
   -s SIZE, --Cluster SIZE
