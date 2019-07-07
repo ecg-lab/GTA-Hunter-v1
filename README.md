@@ -31,10 +31,10 @@ optional arguments:
   -h, --help            show this help message and exit
   -b, --blast           Run BLASTP search to first identify GTA homologs for
                         the classification.
-  -g GTA, --GTA GTA     The FASTA-formatted (.faa or .fna) true GTA sequences
+  -g GTA, --GTA GTA     The FASTA-formatted (.faa or .fna) "true GTA" sequences
                         used for training.
   -v VIRUS, --virus VIRUS
-                        The FASTA-formatted (.faa or .fna) true viruses
+                        The FASTA-formatted (.faa or .fna) "true viruses"
                         sequences used for training.
   -q QUERIES, --queries QUERIES
                         The FASTA-formatted (.faa or .fna) sequences to be
