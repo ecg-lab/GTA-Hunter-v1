@@ -112,7 +112,7 @@ Note: please create 'example_outdir' folder before running the program.
 python GTA_Hunter.py -b -f example_blast/ -o example_outdir/ -O
 ```
 The results will be written to the file 'result_(file_name).out' in the output directory.
-The BLASTP search will identify 15 RcGTA homologs and all of them will be classifier as RcGTA-like genes (see 'example_output' for details)
+The BLASTP search will identify 27 RcGTA homologs and 17 of them will be classified as RcGTA-like genes (see 'example_output' for details).
 
 ## Are the detected GTA-like genes located in the same neighborhood in a genome?
 
@@ -140,7 +140,7 @@ optional arguments:
 
 ```
 
-  For example, let's examine 12 RcGTA-like homologs detected in the *Rhodobacter sphaeroides strain HJ* genome from the example 3 above. To call a region an "RcGTA-like cluster", we will require that at least 6 of the inputted genes have no more than 8,000 base pairs between the adjacent genes. 
+  For example, let's examine 17 RcGTA-like homologs detected in the *Rhodobacter sphaeroides strain HJ* genome from the example 3 above. To call a region an "RcGTA-like cluster", we will require that at least 6 of the inputted genes have no more than 8,000 base pairs between the adjacent genes. 
   
 ```
 python Clustering_genes.py --data example_cl/data.txt --feature example_cl/Rhodobacter_sphae_HJ.txt -s 6 -e 8000
