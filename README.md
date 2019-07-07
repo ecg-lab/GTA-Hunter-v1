@@ -28,47 +28,55 @@ usage: GTA_Hunter_blast.py [-h] [-b] [-g GTA] [-v VIRUS] [-q QUERIES]
 Gene Classification Using SVM.
 
 optional arguments:
-  -h, --help            Show this help message and exit.
-  -b, --blast           Run BLASTP search to first identify GTA homologs for the classification.
-  -g GTA, --GTA GTA     The FASTA-formatted (.faa or .fna) "true GTA" sequences used for training.
+  -h, --help            show this help message and exit
+  -b, --blast           Run BLASTP search to first identify GTA homologs for
+                        the classification.
+  -g GTA, --GTA GTA     The FASTA-formatted (.faa or .fna) true GTA sequences
+                        used for training.
   -v VIRUS, --virus VIRUS
-                        The FASTA-formatted (.faa or .fna) "true viruses" sequences used for training.
+                        The FASTA-formatted (.faa or .fna) true viruses
+                        sequences used for training.
   -q QUERIES, --queries QUERIES
-                        The FASTA-formatted (.faa or .fna) sequences to be classified.
+                        The FASTA-formatted (.faa or .fna) sequences to be
+                        classified.
   -o OUTDIR, --outdir OUTDIR
-                        The folder path in which to store the output.
+                        The folder path in which to store output.
   -k [KMER], --kmer [KMER]
                         The size of k-mer (default=4).
   -p [PSEAAC], --pseaac [PSEAAC]
                         Expand feature set to include pseudo amino acid
-                        composition (default=3). As the parameter, specify value of lambda. Weight = 0.05 (after Chou 2001). 
+                        composition (default=3). As the parameter, specify
+                        value of lambda. Weight = 0.05 (after Chou 2001).
   -y, --physico         Expand feature set to include physicochemical
                         properties of amino acids.
-  -m, --min             Print bare minimum of the results.
+  -m, --min             Print bare minimum results.
   -O, --optimal         Use the optimal parameters for the RcGTA gene homolog
-                        classification as listed in Table 2 in Kogay et al 2019.
+                        classification as listed in Table 2 in Kogay et al
+                        2019.
   -f FOLDER, --folder FOLDER
-                        Provide a folder with one or multiple proteomes (*.faa files).
-  -W                    Weigh the training set. Distance files will be
+                        Provide a folder with one or multiple proteomes (*.faa
+                        files).
+  -W                    Weight training set if desired. Distance files will be
                         supplied automatically.
   -w WEIGHT WEIGHT, --weight WEIGHT WEIGHT
-                        Weigh the training set. Specify the two pairwise distance files needed for
-                        weighting (first file for GTAs, second file for viruses).
-  -t CLUSTER_TYPE, --cluster_type CLUSTER_TYPE
+                        Weigh the training set. Specify the two pairwise
+                        distance files needed for eighting (first file for
+                        GTAs, second file for viruses).
+  -z CLUSTER_TYPE, --cluster_type CLUSTER_TYPE
                         Specify 'farthest' or 'nearest' neighbors clustering
                         (default='farthest').
-  -d DIST, --dist DIST  Specify the cutoff distance for clustering in the
+  -t DIST, --dist DIST  Specify the cutoff distance for clustering in the
                         weighting scheme (default=0.01).
   -c C, --soft_margin C
                         The soft margin for the SVM (default=1.0).
   -x [XVAL], --xval [XVAL]
-                        To perform cross validation of the training set. Specify
+                        Performs cross validation of training set. Specify
                         folds over 10 repetitions (default=5).
   -e KERNEL KERNEL, --kernel KERNEL KERNEL
                         Specify kernel to be used and sigma if applicable
-                        (i.e. Gaussian) (default='linear', 0).
+                        (i.e. gaussian) (default='linear', 0).
   -s, --svs             Show support vectors.
-
+  
 ```
 
 ## How to use it - Example 1: Classify homologs of RcGTA-like gene using the provided training data
