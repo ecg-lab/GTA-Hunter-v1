@@ -151,7 +151,7 @@ optional arguments:
   For example, let's examine 17 RcGTA-like homologs detected in the *Rhodobacter sphaeroides strain HJ* genome from the example 3 above. To call a region an "RcGTA-like cluster", we will require that at least 6 of the inputted genes have no more than 8,000 base pairs between the adjacent genes. 
   
 ```
-python Clustering_genes.py --data example_cl/data.txt --feature example_cl/Rhodobacter_sphae_HJ.txt -s 6 -e 8000
+python Clustering_genes.py --data example_cl/data.txt --feature example_cl/Rhodobacter_sphaeroides_HJ.txt -s 6 -e 8000
 ```
   The program will report that 11 out of the 17 provided RcGTA-like genes are in the same neighborhood in the genome, and therefore can be designated as an "RcGTA-like cluster".
 
