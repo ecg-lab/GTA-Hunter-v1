@@ -73,7 +73,7 @@ optional arguments:
                         Performs cross validation of training set. Specify
                         folds over 10 repetitions (default=5).
   -e KERNEL KERNEL, --kernel KERNEL KERNEL
-                        Specify kernel to be used and sigma for the gaussian kernel.
+                        (for advanced users) Specify kernel to be used and sigma for the gaussian kernel.
                         (options: 'linear', 'gaussian') (default='linear', 0).
   -s, --svs             Show support vectors.
   
