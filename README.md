@@ -56,11 +56,11 @@ optional arguments:
   -f FOLDER, --folder FOLDER
                         Provide a folder with one or multiple proteomes (*.faa
                         files).
-  -W                    Weight training set if desired. Distance files will be
-                        supplied automatically.
+  -W                    Weight training datasets. Pre-calculated distances 
+  			will be used automatically.
   -w WEIGHT WEIGHT, --weight WEIGHT WEIGHT
-                        Weight the training set. Specify the two pairwise
-                        distance files needed for eighting (first file for
+                        Weight training datasets. Specify the two pairwise
+                        distance files needed for weighting (first file for
                         GTAs, second file for viruses).
   -z CLUSTER_TYPE, --cluster_type CLUSTER_TYPE
                         Specify 'farthest' or 'nearest' neighbors clustering
