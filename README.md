@@ -59,7 +59,7 @@ optional arguments:
   -W                    Weight training set if desired. Distance files will be
                         supplied automatically.
   -w WEIGHT WEIGHT, --weight WEIGHT WEIGHT
-                        Weigh the training set. Specify the two pairwise
+                        Weight the training set. Specify the two pairwise
                         distance files needed for eighting (first file for
                         GTAs, second file for viruses).
   -z CLUSTER_TYPE, --cluster_type CLUSTER_TYPE
@@ -73,8 +73,8 @@ optional arguments:
                         Performs cross validation of training set. Specify
                         folds over 10 repetitions (default=5).
   -e KERNEL KERNEL, --kernel KERNEL KERNEL
-                        Specify kernel to be used and sigma if applicable
-                        (i.e. gaussian) (default='linear', 0).
+                        Specify kernel to be used and sigma for the gaussian kernel.
+                        (options: 'linear', 'gaussian') (default='linear', 0).
   -s, --svs             Show support vectors.
   
 ```
@@ -86,7 +86,7 @@ In this example, we will classify five homologs of the RcGTA portal protein (g3)
 python GTA_Hunter.py -g data/training/gta/3_gta.faa -v data/training/viral/3_viral.faa -c 10000 -w data/training/gta/3_gta.dist data/training/viral/3_viral.dist -t 0.02 -k 3 -q example_run/g3_example.faa
 ```
 
-In the output, the first two sequences will be classified as a "GTA" and the remaining three as a "virus".
+In the output, the first two sequences are classified as a "GTA" and the remaining three are classified as a "virus":
 
 ```
 Gene                                                                                           Score          Classification    GTA Gene
@@ -98,21 +98,26 @@ Gene                                                                            
 time to run: 10.004424810409546
 ```
 
-## How to use it - Example 2: Cross-validate classifier for a gene
+The obtained scores in the "Score" column are derived as described at Figure 2 in Kogay et al. 2019.
+The output is in the file "example_output/example_1.txt".
 
-In this example, we will identify the accuracy of the classifier using five-fold cross-validation.
+## How to use it - Example 2: Cross-validate classifier's performance for a gene
+
+In this example, we will use five-fold cross-validation to examine the accuracy of the classifier to separate viral and GTA homologs of gene g4 with a specific set of parameters.
 ```
 python GTA_Hunter.py -g data/training/gta/4_gta.faa -v data/training/viral/4_viral.faa -c 10000 -w data/training/gta/4_gta.dist data/training/viral/4_viral.dist -t 0.02 -k 3 -p -x 5
 ```
-In the output, on average all sequences will be classified correctly, indicating that tested classifer has 100% of accuracy.
+In the output, we found that on average all sequences in the training dataset are correctly classified, indicating that classifer has 100% of accuracy for the gene g4.
 
 ```
 We correctly classified (on average) 62.00/62 GTA and 465.00/465 Viral genes.
 time to run: 61.76529502868652
 ```
 
+The output is in the file "example_output/example_2.txt".
+
 ## How to use it - Example 3: Find homologs of RcGTA-like gene in a genome and classify them using the provided training data and the most optimal SVM parameters
-In this example, we will first identify homologs of the RcGTA genes among the encoded proteins in a *Paracoccus marcussi* genome using a BLASTP search (Altschul et al. 1997), and then classify them using training data provided in data/taining folder and the optimal parameters that were detected via cross validation (see Table 2 in Kogay et al. 2019). The input file is FASTA-formatted file with amino acid sequences of encoded proteins (*.faa format provided by GenBank@NCBI) and is located in the "example_blast" folder. 
+In this example, we will first identify homologs of the RcGTA genes among the encoded proteins in a *Rhodobacter sphaeroides* strain HJ genome using a BLASTP search (Altschul et al. 1997), and then classify them using training data provided in data/taining folder and the optimal parameters that were detected via cross validation (see Table 2 in Kogay et al. 2019). The input file is FASTA-formatted file with amino acid sequences of encoded proteins (*.faa format provided by GenBank@NCBI) and is located in the "example_blast" folder. 
 
 Note: please create 'example_outdir' folder before running the program.
 
@@ -120,7 +125,50 @@ Note: please create 'example_outdir' folder before running the program.
 python GTA_Hunter.py -b -f example_blast/ -o example_outdir/ -O
 ```
 The results will be written to the file 'result_(file_name).out' in the output directory.
-The BLASTP search will identify 27 RcGTA homologs and 17 of them will be classified as RcGTA-like genes (see 'example_output' for details).
+This exampe search identified 27 RcGTA homologs and 17 of were classified as RcGTA-like genes.
+
+```
+Gene                                                                                           Score          Classification    GTA Gene
+>WP_137457497.1 hypothetical protein [Rhodobacter sphaeroides]                                  -0.797741      GTA              15
+>WP_137457888.1 host specificity protein [Rhodobacter sphaeroides]                              -1.700612      GTA              15
+Gene                                                                                           Score          Classification    GTA Gene
+>WP_137457108.1 phage portal protein [Rhodobacter sphaeroides]                                  0.766007       virus             3
+>WP_137457895.1 phage portal protein [Rhodobacter sphaeroides]                                  -0.980008      GTA               3
+>WP_137459338.1 phage portal protein [Rhodobacter sphaeroides]                                  0.740713       virus             3
+Gene                                                                                           Score          Classification    GTA Gene
+>WP_137457892.1 DUF3168 domain-containing protein [Rhodobacter sphaeroides]                     -1.814797      GTA               8
+>WP_137458772.1 DUF3168 domain-containing protein [Rhodobacter sphaeroides]                     0.071541       virus             8
+>WP_137459210.1 DUF3168 domain-containing protein [Rhodobacter sphaeroides]                     0.243832       virus             8
+Gene                                                                                           Score          Classification    GTA Gene
+>WP_137457496.1 peptidase [Rhodobacter sphaeroides]                                             -0.412156      GTA              14
+>WP_137457889.1 peptidase [Rhodobacter sphaeroides]                                             -1.302067      GTA              14
+Gene                                                                                           Score          Classification    GTA Gene
+>WP_009564481.1 MULTISPECIES: phage major tail protein, TP901-1 family [Rhodobacter]            -1.020971      GTA               9
+Gene                                                                                           Score          Classification    GTA Gene
+>WP_101328016.1 MULTISPECIES: phage major capsid protein [Rhodobacter]                          -0.948470      GTA               5
+>WP_137457105.1 phage major capsid protein [Rhodobacter sphaeroides]                            0.511603       virus             5
+>WP_137459300.1 phage major capsid protein [Rhodobacter sphaeroides]                            0.706092       virus             5
+Gene                                                                                           Score          Classification    GTA Gene
+>WP_115474016.1 HK97 family phage prohead protease [Rhodobacter sphaeroides]                    -1.040761      GTA               4
+>WP_137458228.1 HK97 family phage prohead protease [Rhodobacter sphaeroides]                    -0.244565      GTA               4
+>WP_137458765.1 HK97 family phage prohead protease [Rhodobacter sphaeroides]                    -0.759410      GTA               4
+>WP_137459215.1 HK97 family phage prohead protease [Rhodobacter sphaeroides]                    0.017206       virus             4
+Gene                                                                                           Score          Classification    GTA Gene
+>WP_137457103.1 hypothetical protein [Rhodobacter sphaeroides]                                  0.037486       virus             6
+>WP_137457893.1 hypothetical protein [Rhodobacter sphaeroides]                                  -0.952592      GTA               6
+>WP_137458770.1 phage gp6-like head-tail connector protein [Rhodobacter sphaeroides]            0.344344       virus             6
+>WP_137459212.1 phage gp6-like head-tail connector protein [Rhodobacter sphaeroides]            0.085210       virus             6
+Gene                                                                                           Score          Classification    GTA Gene
+>WP_137457495.1 DUF2163 domain-containing protein [Rhodobacter sphaeroides]                     -1.427688      GTA              13
+>WP_137457890.1 DUF2163 domain-containing protein [Rhodobacter sphaeroides]                     -1.316051      GTA              13
+Gene                                                                                           Score          Classification    GTA Gene
+>WP_115474024.1 TIGR02217 family protein [Rhodobacter sphaeroides]                              -1.328590      GTA              12
+>WP_137457494.1 TIGR02217 family protein [Rhodobacter sphaeroides]                              -0.455782      GTA              12
+Gene                                                                                           Score          Classification    GTA Gene
+>WP_137457896.1 ATP-binding protein [Rhodobacter sphaeroides]                                   -1.470279      GTA               2
+```
+
+The output is in the file "example_output/example_3.txt".
 
 ## How to use it - Example 4: Are the detected GTA-like genes located in the same neighborhood in a genome?
 
@@ -148,23 +196,22 @@ optional arguments:
 
 ```
 
-  For example, let's examine 17 RcGTA-like homologs detected in the *Rhodobacter sphaeroides strain HJ* genome from the example 3 above. To call a region an "RcGTA-like cluster", we will require that at least 6 of the inputted genes have no more than 8,000 base pairs between the adjacent genes. 
+  For example, let's examine 17 RcGTA-like homologs detected in the *Rhodobacter sphaeroides* strain HJ genome from the example 3 above. To call a region an "RcGTA-like cluster", we will require that at least 6 of the inputted genes have no more than 8,000 base pairs between the adjacent genes. 
   
 ```
 python Clustering_genes.py --data example_cl/data.txt --feature example_cl/Rhodobacter_sphaeroides_HJ.txt -s 6 -e 8000
 ```
-  The program will report that 11 out of the 17 provided RcGTA-like genes are in the same neighborhood in the genome, and therefore can be designated as an "RcGTA-like cluster".
+  The program found that 11 out of the 17 inputted RcGTA-like genes are in the same neighborhood in the genome, and therefore can be designated as an "RcGTA-like cluster":
 
 ```
 NZ_CP036419.1 has RcGTA-like cluster; The cluster size is 11 genes
 WP_137457888.1  WP_137457889.1  WP_137457890.1  WP_115474024.1  WP_009564481.1  WP_137457892.1  WP_137457893.1  WP_101328016.1  WP_115474016.1  WP_137457895.1  WP_137457896.1
 ```
-  
-  All example outputs are stored at the folder "example_output".
+The RefSeq IDs of the 11 genes in the cluster are listed. The output is in the file "example_output/example_3.txt".
 
 ## References
 
 - Altschul SF, et al. 1997. Gapped BLAST and PSI-BLAST: a new generation of protein database search programs. Nucleic Acids Res 25: 3389-3402
 - Chou KC. 2001. Prediction of protein cellular attributes using pseudo‐amino acid composition. Proteins 43: 246-255.
-- Ester M, Kriegel H-P, Sander J, Xu X editors. Kdd. 1996
-- Kogay et al 2019
+- Ester M, Kriegel H-P, Sander J, Xu X. 1996. A density-based algorithm for discovering clusters a density-based algorithm for discovering clusters in large spatial databases with noise. In Simoudis E, Han J, Fayyad U editors. Proceedings of the Second International Conference on Knowledge Discovery and Data Mining: 3001507: AAAI Press. p. 226-231.
+- Kogay R, et al 2019. Machine-learning classification suggests that many alphaproteobacterial prophages may instead be gene transfer agents. In preparation.
