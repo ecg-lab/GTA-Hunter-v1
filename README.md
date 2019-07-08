@@ -99,6 +99,7 @@ time to run: 10.004424810409546
 ```
 
 The obtained scores in the "Score" column are derived as described at Figure 2 in Kogay et al. 2019.
+
 The output is in the file "example_output/example_1.txt".
 
 ## How to use it - Example 2: Cross-validate classifier's performance for a gene
@@ -207,11 +208,11 @@ python Clustering_genes.py --data example_cl/data.txt --feature example_cl/Rhodo
 NZ_CP036419.1 has RcGTA-like cluster; The cluster size is 11 genes
 WP_137457888.1  WP_137457889.1  WP_137457890.1  WP_115474024.1  WP_009564481.1  WP_137457892.1  WP_137457893.1  WP_101328016.1  WP_115474016.1  WP_137457895.1  WP_137457896.1
 ```
-The RefSeq IDs of the 11 genes in the cluster are listed. The output is in the file "example_output/example_3.txt".
+The RefSeq IDs of the 11 genes in the cluster are listed. The output is in the file "example_output/example_4.txt".
 
 ## References
 
 - Altschul SF, et al. 1997. Gapped BLAST and PSI-BLAST: a new generation of protein database search programs. Nucleic Acids Res 25: 3389-3402
 - Chou KC. 2001. Prediction of protein cellular attributes using pseudo‐amino acid composition. Proteins 43: 246-255.
 - Ester M, Kriegel H-P, Sander J, Xu X. 1996. A density-based algorithm for discovering clusters a density-based algorithm for discovering clusters in large spatial databases with noise. In Simoudis E, Han J, Fayyad U editors. Proceedings of the Second International Conference on Knowledge Discovery and Data Mining: 3001507: AAAI Press. p. 226-231.
-- Kogay R, et al 2019. Machine-learning classification suggests that many alphaproteobacterial prophages may instead be gene transfer agents. In preparation.
+- Kogay R, et al. 2019. Machine-learning classification suggests that many alphaproteobacterial prophages may instead be gene transfer agents. In preparation.
