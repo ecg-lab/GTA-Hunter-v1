@@ -55,10 +55,6 @@ class Kernel:
 	def gaussian(sigma):
 		return lambda x, y: np.exp(-np.sqrt(np.linalg.norm(x-y)**2 / (2*sigma**2)))
 
-	@staticmethod
-	def polynomial(power):
-		return lambda x, y: np.dot(x, y)**power
-
 #############
 ### TRAIN ###
 #############
@@ -254,13 +250,8 @@ class SVM:
 				self.kernel = Kernel.gaussian(float(sigma))
 			except (ValueError, TypeError):
 				raise Exception("The sigma value could not be processed. Try and float or int.")
-		elif kernel == "polynomial":
-			try:
-				self.kernel = Kernel.polynomial(float(sigma))
-			except (ValueError, TypeError):
-				raise Exception("The power value could not be processed. Try and float or int.")
 		else:
-			raise Exception("Kernel type could not be detected. Try the following: linear, gaussian, polynomial")
+			raise Exception("Kernel type could not be detected. Try the following: linear or gaussian")
 		# Build Predictor
 		self.predictor = SVMTrain(self.kernel, self.c).train(self.trainX, self.trainY, self.weights)
 		# Save train0 and train1 for xval
