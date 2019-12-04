@@ -203,7 +203,7 @@ def run_wrapper(args,name=''):
     #output file (btab) from the blast against GTA db
     blast_out = out_dir +"/blast"+name + ".out"
     #special blast outformat parameters
-    outformat = "'6 qseqid sstart send sframe sseqid pident qlen slen length mismatch gapopen qstart qend evalue bitscore'"
+    outformat = "6 qseqid sstart send sframe sseqid pident qlen slen length mismatch gapopen qstart qend evalue bitscore"
     #run blast search using database of viral and GTA training set
     blastp_cline = NcbiblastpCommandline(query=query_file, db="data/GTA_db/GTA_viral", evalue=0.001, outfmt=outformat, out=blast_out, num_threads=2,dbsize=10000000)
     blastp_cline
