@@ -215,4 +215,4 @@ The RefSeq IDs of the 11 genes in the cluster are listed. The output is in the f
 - Altschul SF, et al. 1997. Gapped BLAST and PSI-BLAST: a new generation of protein database search programs. Nucleic Acids Res 25: 3389-3402
 - Chou KC. 2001. Prediction of protein cellular attributes using pseudo‐amino acid composition. Proteins 43: 246-255.
 - Ester M, Kriegel H-P, Sander J, Xu X. 1996. A density-based algorithm for discovering clusters a density-based algorithm for discovering clusters in large spatial databases with noise. In Simoudis E, Han J, Fayyad U editors. Proceedings of the Second International Conference on Knowledge Discovery and Data Mining: AAAI Press. p. 226-231.
-- Kogay R, et al. 2019. Machine-learning classification suggests that many alphaproteobacterial prophages may instead be gene transfer agents. In preparation.
+- Kogay, R., Neely, T. B., Birnbaum, D. P., Hankel, C. R., Shakya, M., & Zhaxybayeva, O. (2019). Machine-learning classification suggests that many alphaproteobacterial prophages may instead be gene transfer agents. Genome biology and evolution, 11(10), 2941-2953.
